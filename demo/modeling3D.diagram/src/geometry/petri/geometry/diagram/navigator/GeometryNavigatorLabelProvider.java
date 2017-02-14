@@ -17,7 +17,6 @@ import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
 import geometry.petri.geometry.Geometry;
-import geometry.petri.geometry.Line;
 import geometry.petri.geometry.diagram.edit.parts.GeometryEditPart;
 import geometry.petri.geometry.diagram.edit.parts.LineEditPart;
 import geometry.petri.geometry.diagram.edit.parts.LineIdEditPart;

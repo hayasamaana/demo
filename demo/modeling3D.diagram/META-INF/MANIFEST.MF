@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: geometry.petri.geometry.diagram.part.GeometryDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: geometry.petri.geometry.diagram.edit.parts,
+Export-Package: geometry.petri.geometry.diagram.edit.parts, 
  geometry.petri.geometry.diagram.part,
  geometry.petri.geometry.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
