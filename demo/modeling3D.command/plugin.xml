@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension 
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="modeling3D.tutorial"
+               label="SE2 Tutorial">
+         </menu>
+      </menuContribution>
+   </extension>
+
+   <extension 
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:modeling3D.tutorial?after=additions">
+         <command
+               commandId="modeling3D.tutorial.count"
+               label="count">
+            <visibleWhen>
+               <with
+                     variable="selection">
+                  <count value="1"/>
+                  <iterate>
+                     <adapt
+                           type="geometry.petri.geometry.Geometry">
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="modeling3D.tutorial.count"
+            description="Count geo objects in geometry"
+            defaultHandler="modeling3d.command.CountHandler"
+            name="Count">
+      </command>
+   </extension>
+</plugin>

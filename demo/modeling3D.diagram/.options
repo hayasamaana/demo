@@ -1,0 +1,7 @@
+# Tracing options for the modeling3D.diagram plug-in
+
+# Common issues
+modeling3D.diagram/debug=false
+
+# Visual IDs
+modeling3D.diagram/debug/visualID=false

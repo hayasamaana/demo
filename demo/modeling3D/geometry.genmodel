@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/modeling3D/src" modelPluginID="modeling3D" modelName="Geometry"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" importOrganizing="true">
+  <foreignModel>geometry.ecore</foreignModel>
+  <genPackages prefix="Geometry" basePackage="geometry.petri" disposableProviderFactory="true"
+      ecorePackage="geometry.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="geometry.ecore#//LineType">
+      <genEnumLiterals ecoreEnumLiteral="geometry.ecore#//LineType/STRAIGHT"/>
+      <genEnumLiterals ecoreEnumLiteral="geometry.ecore#//LineType/CURVED"/>
+    </genEnums>
+    <genClasses ecoreClass="geometry.ecore#//Position">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Position/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Position/y"/>
+    </genClasses>
+    <genClasses ecoreClass="geometry.ecore#//Geometry">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference geometry.ecore#//Geometry/points"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference geometry.ecore#//Geometry/lines"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Geometry/name"/>
+    </genClasses>
+    <genClasses ecoreClass="geometry.ecore#//Point">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Point/in"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Point/out"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="geometry.ecore#//GeoObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//GeoObject/id"/>
+    </genClasses>
+    <genClasses ecoreClass="geometry.ecore#//Line">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Line/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference geometry.ecore#//Line/end"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference geometry.ecore#//Line/intermediate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute geometry.ecore#//Line/type"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

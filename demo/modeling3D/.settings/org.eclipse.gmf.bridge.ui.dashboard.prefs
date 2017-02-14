@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/modeling3D/geometry.genmodel
+gmf_dashboard/domainModel=platform\:/resource/modeling3D/geometry.ecore
+gmf_dashboard/generationModel=platform\:/resource/modeling3D/geometry.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/modeling3D/geometry.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/modeling3D/geometry.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/modeling3D/geometry.gmftool
