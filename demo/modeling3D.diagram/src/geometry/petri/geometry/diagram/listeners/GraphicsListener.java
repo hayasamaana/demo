@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.gmf.tooling.runtime.update.UpdaterNodeDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
@@ -77,7 +78,7 @@ public class GraphicsListener extends EContentAdapter {
 						//      throw new OperationCanceledException();
 						//throw new OperationCanceledException();
 						
-						preventChangingLineStyle((Connector)eNotifier, (EStructuralFeature)notification.getFeature());
+						//preventChangingLineStyle((Connector)eNotifier, (EStructuralFeature)notification.getFeature());
 						
 					}
 					
@@ -96,6 +97,7 @@ public class GraphicsListener extends EContentAdapter {
 			LayoutConstraint layout=((Node)source).getLayoutConstraint();
 			if(layout instanceof Bounds){
 				RelativeBendpoints relativeBendpoints=(RelativeBendpoints) bendpoints;
+				@SuppressWarnings("rawtypes")
 				List points=relativeBendpoints.getPoints();
 				//delete all intermediate positions from line
 				line.getIntermediate().clear();
@@ -104,8 +106,8 @@ public class GraphicsListener extends EContentAdapter {
 				// skip the start and end bendpoint since the Gmf inserts an implecit benpoint to source and target node
 				for(int i=1;i+1<points.size();i++){
 					Object object=points.get(i);
-					if(object instanceof RelativeBendpoints){
-						Position pos=createPosition((Bounds)layout,(RelativeBendpoints)object);
+					if(object instanceof RelativeBendpoint){
+						Position pos=createPosition((Bounds)layout,(RelativeBendpoint)object);
 						line.getIntermediate().add(pos);
 						
 					}
@@ -117,7 +119,7 @@ public class GraphicsListener extends EContentAdapter {
 		}
 	}
 
-	private Position createPosition(Bounds sourceBounds, RelativeBendpoints bendPoints) {
+	private Position createPosition(Bounds sourceBounds, RelativeBendpoint bendPoint) {
 		// TODO Auto-generated method stub
 		int width=sourceBounds.getWidth();
 		int hight=sourceBounds.getHeight();
@@ -126,8 +128,9 @@ public class GraphicsListener extends EContentAdapter {
 		float cx=(float) (sourceBounds.getX()+width/2.0); // set center 
 		float cy=(float) (sourceBounds.getY()+hight/2.0);
 		// compute absolute position of bendpoint
-		float x=cx+((Position) bendPoints).getX();
-		float y=cy+((Position) bendPoints).getY();
+	
+		float x=cx+bendPoint.getSourceX();
+		float y=cy+bendPoint.getSourceY();
 		Position position=GeometryFactory.eINSTANCE.createPosition();
 		updatePosition(position, x, y);
 		return position;
