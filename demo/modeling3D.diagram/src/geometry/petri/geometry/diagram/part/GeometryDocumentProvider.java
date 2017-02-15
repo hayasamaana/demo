@@ -54,6 +54,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 
+import geometry.petri.geometry.diagram.listeners.GraphicsListener;
+
 /**
  * @generated
  */
@@ -722,7 +724,12 @@ public class GeometryDocumentProvider extends AbstractDocumentProvider implement
 		private ResourceSetModificationListener myResourceSetListener;
 
 		/**
-		* @generated
+		* @generated NOT
+		*/
+		private GraphicsListener graphicslistener;
+
+		/**
+		* @generated NOT
 		*/
 		public ResourceSetInfo(IDiagramDocument document, IEditorInput editorInput) {
 			super(document);
@@ -731,6 +738,12 @@ public class GeometryDocumentProvider extends AbstractDocumentProvider implement
 			startResourceListening();
 			myResourceSetListener = new ResourceSetModificationListener(this);
 			getResourceSet().eAdapters().add(myResourceSetListener);
+			
+			// register listener
+			graphicslistener =new GraphicsListener();
+			document.getDiagram().eAdapters().add(graphicslistener);
+			
+			
 		}
 
 		/**
@@ -778,7 +791,7 @@ public class GeometryDocumentProvider extends AbstractDocumentProvider implement
 		/**
 		* @generated
 		*/
-		public void dispose() {
+		public void disposeGen() {
 			stopResourceListening();
 			getResourceSet().eAdapters().remove(myResourceSetListener);
 			for (Iterator<Resource> it = getLoadedResourcesIterator(); it.hasNext();) {
@@ -786,6 +799,20 @@ public class GeometryDocumentProvider extends AbstractDocumentProvider implement
 				resource.unload();
 			}
 			getEditingDomain().dispose();
+		}
+		
+		/**
+		 * @generated NOT
+		 */
+		public void dispose(){
+			
+			// unregister the listener
+			if(graphicslistener !=null && myDocument !=null){
+				myDocument.getDiagram().eAdapters().remove(graphicslistener);
+				graphicslistener=null;
+				
+			}
+			disposeGen();
 		}
 
 		/**
