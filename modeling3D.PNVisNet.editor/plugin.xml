@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated PNVisNet -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="petri.vis.net.PNVisNet.presentation.PNVisNetModelWizardID"
+            name="%_UI_PNVisNetModelWizard_label"
+            class="petri.vis.net.PNVisNet.presentation.PNVisNetModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PNVisNetModelFile.gif">
+         <description>%_UI_PNVisNetModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated PNVisNet -->
+      <editor
+            id="petri.vis.net.PNVisNet.presentation.PNVisNetEditorID"
+            name="%_UI_PNVisNetEditor_label"
+            icon="icons/full/obj16/PNVisNetModelFile.gif"
+            extensions="pnvisnet"
+            class="petri.vis.net.PNVisNet.presentation.PNVisNetEditor"
+            contributorClass="petri.vis.net.PNVisNet.presentation.PNVisNetActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

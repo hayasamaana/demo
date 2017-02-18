@@ -1,6 +1,21 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: modeling3D.PNVisNet
-Bundle-SymbolicName: modeling3D.PNVisNet; singleton:=true
+Bundle-Name: %pluginName
+Bundle-SymbolicName: modeling3D.PNVisNet;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Require-Bundle: org.eclipse.emf.ecore
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: petri.vis.net.PNVisNet,
+ petri.vis.net.PNVisNet.impl,
+ petri.vis.net.PNVisNet.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ modeling3D.Animation;visibility:=reexport,
+ org.pnml.tools.epnk;visibility:=reexport,
+ org.eclipse.emf.validation;bundle-version="1.8.0",
+ org.pnml.tools.epnk.diagram;bundle-version="1.1.2",
+ org.eclipse.draw2d,
+ org.eclipse.swt
+Bundle-ActivationPolicy: lazy
