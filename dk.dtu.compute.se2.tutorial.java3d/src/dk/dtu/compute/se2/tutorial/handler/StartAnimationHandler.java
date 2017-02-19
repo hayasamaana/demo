@@ -61,9 +61,15 @@ public class StartAnimationHandler extends AbstractHandler implements IHandler {
 	        return null;
 	}
 	
-	private Point getPoint(Object first) {
+	private Point getPoint(Object object) {
 		// TODO Auto-generated method stub
+		if (object instanceof Point) {
+			return (Point) object;
+		} else if (object instanceof IAdaptable) {
+			return ((IAdaptable) object).getAdapter(Point.class);
+		}
 		return null;
+		
 	}
 
 	private boolean enabled = true;
