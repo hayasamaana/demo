@@ -47,8 +47,45 @@ public class Move extends Animation {
 			Point start = line.getStart();
 			Point end = line.getEnd();
 			if (start != null && end != null) {
-
+				// hayaaaaa
 				// TODO compute correct transformation and rotation
+                  x1=start.getX();
+                  y1=start.getY();
+                  z1=0;// start.getz();
+                  x2=end.getX();
+                  y2=end.getY();
+                  z2=0;// end.getz();
+                  xd=x2-x1;
+                  yd=y2-y1;
+                  zd=z2-z1;
+                  d=(float) Math.sqrt(xd*xd+yd*yd+zd*zd);
+                  xd=xd/d;
+                  yd=yd/d; // normalization so the direction of length 1
+                  zd=zd/d;
+                  //set the position of the object to the source point
+                  transform=new Transform3D();
+                  transform.setTranslation(new Vector3f(x1,y1,z1));
+                  // set the direction of the object
+                  Vector3f direction=new Vector3f(xd,yd,zd);
+                  Vector3f axis=new Vector3f();
+                  axis.cross(xdirection, direction);
+                  axis.normalize();
+                  if(Float.isNaN(axis.x)||Float.isNaN(axis.y)||Float.isNaN(axis.z)){
+                	  axis.x=0;
+                	  axis.y=0;
+                	  axis.z=-1;
+                	  
+                  }
+                  float angle=xdirection.angle(direction);
+                  float sinAngle=(float) Math.sin(angle/2);
+                  float a=axis.x*sinAngle;
+                  float b=axis.y*sinAngle;
+                  float c=axis.z*sinAngle;
+                  float d=(float) Math.cos(angle/2);
+                  Quat4f quat=new Quat4f(a,b,c,d);
+                  transform.setRotation(quat);
+
+			
 				transformGroup.setTransform(transform);
 			}
 		}	
@@ -62,7 +99,8 @@ public class Move extends Animation {
 				terminated = true;
     	   } else {
     		   float factor = elapsed * speed;
-                   // TODO update transformation (translation to correct position)
+                   // haya TODO update transformation (translation to correct position)
+    		   transform.setTranslation(new Vector3f(x1+factor*xd,y1+factor*yd,z1+factor*zd));
     		   transformGroup.setTransform(transform);
     	   }   	
     	}

@@ -5,7 +5,7 @@
    <extension 
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="popup:dk.dtu.compute.se2.tutorial?after=additions">
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <command
                commandId="tutorial.java3D.startvis">
             <visibleWhen>
