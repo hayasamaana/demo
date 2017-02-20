@@ -11,7 +11,7 @@
       <package
             uri="http://animation.net"
             class="animation.petri.Animations.AnimationsPackage"
-            genModel="src/Animation.genmodel"/>
+            genModel="model/Animation.genmodel"/>
    </extension>
 
 </plugin>
