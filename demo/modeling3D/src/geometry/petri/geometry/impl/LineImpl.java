@@ -114,6 +114,7 @@ public class LineImpl extends GeoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	
 	public Point getStart() {
 		if (start != null && start.eIsProxy()) {
 			InternalEObject oldStart = (InternalEObject)start;

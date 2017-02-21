@@ -14,7 +14,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.pnml.tools.epnk.helpers.NetFunctions;
+import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.structuredpntypemodel.impl.StructuredLabelImpl;
 
 import petri.vis.net.PNVisNet.AnimationLabel;
@@ -58,8 +59,19 @@ public class AnimationLabelImpl extends StructuredLabelImpl implements Animation
 	 */
 	@Override
 	public EObject parse(String input) {
+		
+		if(input!=null){
+			PetriNet type=(PetriNet) NetFunctions.getPetriNetType(this);
+			if(type instanceof PNVisImpl){
+				PNVisImpl visnettype=(PNVisImpl) type;
+				return visnettype.parseAnimationLabel(input);
+			}
+			
+		}
+		return null;
+		
 		// TODO Auto-generated method stub
-		String[]animations=input.split(";?\\s+"); // split according to ; and multiple spaces  ? left right handside of substring
+		/*String[]animations=input.split(";?\\s+"); // split according to ; and multiple spaces  ? left right handside of substring
 		if(animations!=null){
 			if(animations.length==0){	return null;}
 			else if(animations.length==1){
@@ -80,14 +92,14 @@ public class AnimationLabelImpl extends StructuredLabelImpl implements Animation
 				return sequence;
 			}	
 		}
-		return null; 
+		return null; */
 	}
 	/**
 	 * @generated NOT
 	 * @param input
 	 * @return
 	 */
-	private Animation parseAnimation(String input) {
+	/*private Animation parseAnimation(String input) {
 		// TODO Auto-generated method stub
 		if("move".equals(input)){
 			return AnimationsFactory.eINSTANCE.createMove();
@@ -100,7 +112,7 @@ public class AnimationLabelImpl extends StructuredLabelImpl implements Animation
 			return AnimationsFactory.eINSTANCE.createTrigger();
 		}
 		return null;
-	}
+	}*/
 
 	/**
 	 * <!-- begin-user-doc -->
