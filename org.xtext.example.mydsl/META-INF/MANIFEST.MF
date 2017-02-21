@@ -8,5 +8,16 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: modeling3D.Animation,
  org.eclipse.xtext,
  org.eclipse.xtext.xbase,
- org.eclipse.equinox.common;bundle-version="3.5.0"
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.xtext.example.mydsl,
+ org.xtext.example.mydsl.services,
+ org.xtext.example.mydsl.parseTreeConstruction,
+ org.xtext.example.mydsl.parser.antlr,
+ org.xtext.example.mydsl.parser.antlr.internal,
+ org.xtext.example.mydsl.validation,
+ org.xtext.example.mydsl.scoping,
+ org.xtext.example.mydsl.formatting
+Import-Package: org.apache.log4j
